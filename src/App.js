@@ -17,6 +17,7 @@ import Survey from './containers/Survey';
 
 // layout imports
 import Header from './layout/Header';
+import Footer from './layout/Footer';
 import Nav from './layout/Nav';
 
 // auth imports
@@ -64,7 +65,12 @@ class App extends Component {
 
   render() {
     let content = (
-      <>
+      <div id = 'App'>
+      
+        <Header />
+        
+        <>
+        
         <Route exact path = '/' component = { 
           () => (<Splash user = { this.state.user } getUser = { this.getUser } /> )
           } />
@@ -72,7 +78,7 @@ class App extends Component {
         <Route path="/login" component= {
           () => (<Login user = { this.state.user } getUser = {this.getUser} />)
           } />
-  
+
         <Route path="/signup" component= {
           () => (<Signup user = { this.state.user } getUser = { this.getUser } />)
           } />
@@ -96,7 +102,11 @@ class App extends Component {
         <Route path = '/survey' component = {
           () => (<Survey user = { this.state.user } /> ) 
         } />
+
         </>
+
+        <Footer />
+      </div>
       )
     return (
       <div className="App">
