@@ -1,7 +1,14 @@
+// dependency imports
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import SERVER_URL from '../constants/server';
+
+// css import
+import './Auth.css'
+
+// image import
+import Study from '../img/Study.svg';
 
 class Signup extends Component {
   constructor(props){
@@ -39,23 +46,32 @@ class Signup extends Component {
       return (<Redirect to="/profile" />);
     }
     return(
-        <div>
-          <h2>Signup as a new user</h2>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <input name="Name" placeholder="What is your name?" value={this.state.name} onChange={this.handleNameChange} />
-            </div>
-            <div>
-              <input name="Email" placeholder="What is your email?" value={this.state.email} onChange={this.handleEmailChange} />
-            </div>
-            <div>
-              <input name="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-            </div>
-            <input type="submit" value="Sign Me Up!" className="button" />
-          </form>
+      <div className = 'Auth'>
+        <img className = 'StudyLogo' src = { Study } />
+        <div className = 'AuthWelcome'>
+          <h2>Welcome!</h2>
+          <h3>Please enter your email and password</h3>
         </div>
-      );
+        <form className = 'AuthInput' onSubmit = { this.handleSubmit }>
+          <input className = 'Input' type = 'Text' name = 'Name' placeholder = 'Name...' value = { this.state.name } onChange = { this.handleNameChange } />
+          <br />
+          <input className = 'Input' type = 'Email' name = 'Email' placeholder = 'Email...' value = { this.state.email } onChange = { this.handleEmailChange } />
+          <br />
+          <input className = 'Input' type = 'Password' name = 'Password' placeholder = 'Password...' value = { this.state.password } onChange = { this.handlePasswordChange } />
+          <br />
+          <div className = 'LinkSubs'>
+            <div className = 'Links'>
+              <a href = '/login'>Log into your account</a><br />
+            </div>
+            <div className = 'Subs'>
+              <input className = 'Submit' type = 'Submit' text = 'Sign Up' />
+            </div>
+          </div>
+        </form>
+      </div>
+      )
   }
 }
 
 export default Signup;
+
