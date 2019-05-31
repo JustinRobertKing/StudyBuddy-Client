@@ -1,6 +1,7 @@
 // dependency imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 // css import
@@ -24,9 +25,17 @@ export default class Home extends Component {
         })
     }
 
+    handleLogout = (e) => {
+        e.preventDefault();
+        // REMOVE LS TOKEN; UPDATE PARENT STATE
+        localStorage.removeItem('serverToken')
+        this.props.resetUser()
+      }
+
     render() {
         return(
             <div id = 'Home'>
+                <h1 onClick = { this.handleLogout}>Log Out</h1>
                 <div className = 'SearchResult'>
                     <div className = 'SearchImg'>
                         <img className = 'Img' src = 'https://www.placecage.com/gif/200/300'/>

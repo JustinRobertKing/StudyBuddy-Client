@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // GET USER INFO
+    this.getUser()
   }
 
   resetUser = () => {
@@ -63,27 +63,23 @@ class App extends Component {
   }
 
   render() {
-    let content;
-    if (!this.user) {
-      content = (
+    let content = (
       <>
-        <Route exact path = '/' component = { Splash } />
+        <Route exact path = '/' component = { 
+          () => (<Splash user = { this.state.user } getUser = { this.getUser } /> )
+          } />
 
-        <Route path="/login" component={
+        <Route path="/login" component= {
           () => (<Login user = { this.state.user } getUser = {this.getUser} />)
           } />
   
-        <Route path="/signup" component={
+        <Route path="/signup" component= {
           () => (<Signup user = { this.state.user } getUser = { this.getUser } />)
           } />
-      </>
-      )
-    } else {
-      let content = (
-        <>
-        <Header />
 
-        <Route exact path = "/" component = { Home } />
+        <Route exact path = "/home" component = {
+          () => (<Home user = { this.state.user } resetUser = { this.resetUser } /> )
+        } />
 
         <Route path = '/profile' component = { 
           () => (<Profile user = { this.state.user } /> )
@@ -96,14 +92,18 @@ class App extends Component {
         <Route path = '/sessions' component = {
           () => (<Sessions user = { this.state.user } /> )
           } />
+
+        <Route path = '/survey' component = {
+          () => (<Survey user = { this.state.user } /> ) 
+        } />
         </>
       )
-    }
     return (
       <div className="App">
         <Router> 
-      {/* <Nav user = { this.state.user } resetUser = { this.resetUser } /> */}
-          <Survey />
+          {/* <Nav user = { this.state.user } resetUser = { this.resetUser } /> */}
+          { content }
+          
         </Router>
       </div>
     
