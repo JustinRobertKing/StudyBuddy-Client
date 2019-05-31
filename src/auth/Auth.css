@@ -1,0 +1,55 @@
+.Auth {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.StudyLogo {
+    height: 30vh;
+}
+
+.AuthWelcome {
+    height: 20vh;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.Input {
+    width: 70vw;
+    height: 4vh;
+    font-size: 1em;
+    margin: 0.1em 0;
+    border: 1px solid darkslategray;
+}
+
+.LinkSubs {
+    width: 70vw;
+    margin: 0 auto;
+    display: flex;
+    margin-top: .2em;
+    font-size: 1.2em;
+}
+
+.Links {
+    width: 35vw;
+    text-align: left;
+    font-size: .6em;
+    text-decoration: none;
+    color: blue;
+}
+
+.Subs {
+    width: 35vw;
+    text-align: right;
+}
+
+.Submit {
+    width: 25vw;
+    margin: 0 auto;
+    padding: 0.8em;
+    background-color: #1B78BA;
+    color: white;
+    border-radius: 5em;
+}

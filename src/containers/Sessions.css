@@ -1,0 +1,19 @@
+#Sessions {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Session {
+    width: 90vw;
+    height: 27vh;
+    margin: 0 auto;
+    border: 1px solid black;
+    text-align: left;
+}
+
+.SessionInfo {
+    margin-left: 1em;
+}

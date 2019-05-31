@@ -1,0 +1,14 @@
+#ProfileBanner {
+    height: 45vh;
+}
+
+#ProfilePic {
+    height: 20vh;
+    width: 35vw;
+    border-radius: .5em;
+}
+
+#ProfileLower {
+    height: 50vh;
+    text-align: left;
+}

@@ -1,14 +1,27 @@
+// dependency imports
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import SERVER_URL from './constants/server';
+
+// css import
 import './App.css';
-import Footer from './layout/Footer';
-import Home from './Home';
-import Login from './auth/Login';
+
+// container imports
+import Home from './containers/Home';
+import Inbox from './containers/Inbox';
+import Profile from './containers/Profile';
+import Sessions from './containers/Sessions';
+import Splash from './containers/Splash';
+import Survey from './containers/Survey';
+
+// layout imports
+import Header from './layout/Header';
 import Nav from './layout/Nav';
-import Profile from './Profile';
+
+// auth imports
 import Signup from './auth/Signup';
+import Login from './auth/Login';
 
 class App extends Component {
   constructor(props){
@@ -50,26 +63,51 @@ class App extends Component {
   }
 
   render() {
+    let content;
+    if (!this.user) {
+      content = (
+      <>
+        <Route exact path = '/' component = { Splash } />
+
+        <Route path="/login" component={
+          () => (<Login user = { this.state.user } getUser = {this.getUser} />)
+          } />
+  
+        <Route path="/signup" component={
+          () => (<Signup user = { this.state.user } getUser = { this.getUser } />)
+          } />
+      </>
+      )
+    } else {
+      let content = (
+        <>
+        <Header />
+
+        <Route exact path = "/" component = { Home } />
+
+        <Route path = '/profile' component = { 
+          () => (<Profile user = { this.state.user } /> )
+          } />
+
+        <Route path = '/inbox' component = {
+          () => (<Inbox user = { this.state.user } /> )
+          } />
+
+        <Route path = '/sessions' component = {
+          () => (<Sessions user = { this.state.user } /> )
+          } />
+        </>
+      )
+    }
     return (
       <div className="App">
-        <Router>
-          <div className="container">
-            <Nav user={this.state.user} resetUser={this.resetUser} />
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={
-              () => (<Login user={this.state.user} getUser={this.getUser} />)
-            } />
-            <Route path="/signup" component={
-              () => (<Signup user={this.state.user} getUser={this.getUser} />)
-            } />
-            <Route path="/profile" component={
-              () => (<Profile user={this.state.user} />)
-            } />
-          </div>
+        <Router> 
+      {/* <Nav user = { this.state.user } resetUser = { this.resetUser } /> */}
+          <Survey />
         </Router>
-        <Footer />
       </div>
-    );
+    
+    )
   }
 }
 
