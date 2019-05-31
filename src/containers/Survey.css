@@ -3,3 +3,12 @@
 .SurveyAnswer {
     margin: 0 1em;
 }
+
+#Submit {
+    padding: 1em;
+    background-color: #1B78BA;
+    color: white;
+    margin-top: 1em;
+    font-size: 1.1em;
+    border-radius: .4em;
+}

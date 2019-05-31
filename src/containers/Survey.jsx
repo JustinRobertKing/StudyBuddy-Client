@@ -1,20 +1,37 @@
 // dependency imports
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-
-// component imports
-import When from './components/When';
+import SERVER_URL from '../constants/server';
 
 // css import
 import './Survey.css';
 
-
 export default class Survey extends Component {
     state = {
-        page: 1,
+        surveyResults: [],
+        complete: false
+    }
+
+    submitSurveyResult = () => {
+        axios.put(`${SERVER_URL}/user/survey`)
+        .then( res => {
+            console.log('Once upon a time, there was a young boy named Donald')
+        }) 
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.submitSurveyResult()
+        this.setState({
+            complete: true
+        })
     }
 
     render() {
+        if (this.state.complete === true) {
+            return(<Redirect to = '/home' />)
+        }
         return (
             <div id = 'Survey'>
                 <h3>On a scale of 1 -5, with one being almost never and 5 being almost always, please answer the following statetments.</h3>
@@ -132,7 +149,8 @@ export default class Survey extends Component {
                 <input type = 'radio' className = 'SurveyAnswer' /><label>2</label>
                 <input type = 'radio' className = 'SurveyAnswer' /><label>3</label>
                 <input type = 'radio' className = 'SurveyAnswer' /><label>4</label>
-                <input type = 'radio' className = 'SurveyAnswer' /><label>5</label>
+                <input type = 'radio' className = 'SurveyAnswer' /><label>5</label><br />
+                <input type = 'submit' value = 'Submit' id = 'Submit'/>
             </form>
             </div>
         )
