@@ -43,7 +43,7 @@ class Signup extends Component {
 
   render() {
     if(this.props.user){
-      return (<Redirect to="/profile" />);
+      return (<Redirect to = "/home" />);
     }
     return(
       <div className = 'Auth'>
