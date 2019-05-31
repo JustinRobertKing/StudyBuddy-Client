@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 import './Profile.css';
 import axios from 'axios';
 
+// layout imports
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
+
 export default class Profile extends Component {
     state = {
         surveyResults: []

@@ -35,7 +35,6 @@ export default class Home extends Component {
     render() {
         return(
             <div id = 'Home'>
-                <h1 onClick = { this.handleLogout}>Log Out</h1>
                 <div className = 'SearchResult'>
                     <div className = 'SearchImg'>
                         <img className = 'Img' src = 'https://www.placecage.com/gif/200/300'/>
